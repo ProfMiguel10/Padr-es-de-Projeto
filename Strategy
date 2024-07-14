@@ -1,0 +1,47 @@
+package strategy;
+public interface Estrategia {
+	public void executar();
+}
+public class ClasseA implements Estrategia {
+	public void executar() {
+		System.out.println("Estratégia A");
+	}
+}
+public class ClasseB implements Estrategia{
+	public void executar() {
+		System.out.println("Estratégia B");
+	}
+}
+public class ClasseC implements Estrategia{
+	public void executar() {
+		System.out.println("Estratégia B");
+	}
+}
+public class Contexto {
+	private Estrategia estrategia;
+
+	public Contexto(Estrategia estrategia) {
+		this.estrategia = estrategia;
+	}
+
+	public void setEstrategia(Estrategia estrategia) {
+		this.estrategia = estrategia;
+	}
+
+	public void executarEstrategia() {
+		estrategia.executar();
+	}
+}
+public class Principal {
+	public static void main(String[] args) {
+
+		Contexto contexto = new Contexto(new ClasseA());
+		contexto.executarEstrategia();
+
+		contexto.setEstrategia(new ClasseB());
+		contexto.executarEstrategia();
+
+		contexto.setEstrategia(new ClasseC());
+		contexto.executarEstrategia();
+	}
+}
